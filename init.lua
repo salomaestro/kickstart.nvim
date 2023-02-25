@@ -66,6 +66,9 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
   -- NOTE: First, some plugins that don't require any configuration
 
+  -- Surrounding text with parenthesis, brackets, etc..
+  'tpope/vim-surround',
+
   -- Git related plugins
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
@@ -197,6 +200,15 @@ vim.o.hlsearch = false
 
 -- Make line numbers default
 vim.wo.number = true
+
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
+
+vim.opt.incsearch = true
+
+vim.opt.scrolloff = 10
+vim.opt.colorcolumn = "80"
 
 -- Enable mouse mode
 vim.o.mouse = 'a'
