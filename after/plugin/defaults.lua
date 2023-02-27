@@ -1,72 +1,73 @@
+local keymap = vim.keymap.set
 local opts = { silent = true }
-
 
 vim.o.scrolloff = 10
 vim.o.colorcolumn = "80"
 vim.opt.relativenumber = true
 
-vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = '[S]earch [R]esume' })
-vim.keymap.set('n', '<leader>gs', vim.cmd.Git)
-vim.keymap.set('n', '<leader>pv', vim.cmd.Ex)
+keymap('n', '<leader>sr', require('telescope.builtin').resume, { desc = '[S]earch [R]esume' })
+keymap('n', '<leader>gs', vim.cmd.Git)
+keymap('n', '<leader>pv', vim.cmd.Ex)
 
 -- Move visual selected lines with indentation (wow).
-vim.keymap.set('v', 'J', ":m '>+1<cr>gv=gv")
-vim.keymap.set('v', 'K', ":m '<-2<cr>gv=gv")
+keymap('v', 'J', ":m '>+1<cr>gv=gv", opts)
+keymap('v', 'K', ":m '<-2<cr>gv=gv", opts)
 
 -- Concatenates line below cursor but does not move cursor
-vim.keymap.set('n', 'J', "mzJ`z")
+keymap('n', 'J', "mzJ`z")
 
 -- Center cursor when hopping half page.
-vim.keymap.set('n', '<C-d>', "<C-d>zz")
-vim.keymap.set('n', '<C-u>', "<C-u>zz")
+keymap('n', '<C-d>', "<C-d>zz")
+keymap('n', '<C-u>', "<C-u>zz")
 
 -- Center cursor when looking through find
-vim.keymap.set('n', 'N', 'Nzzzv')
-vim.keymap.set('n', 'n', 'nzzzv')
+keymap('n', 'N', 'Nzzzv')
+keymap('n', 'n', 'nzzzv')
 
 -- Store what was yanked in a void buffer (can therefore put multiple times)
-vim.keymap.set('x', '<leader>p', "\"_dP")
+keymap('x', '<leader>p', "\"_dP")
 
 -- Open useful telescope help windows.
-vim.keymap.set('n', '<leader>th', ":Telescope help_tags <cr>")
-vim.keymap.set('n', '<leader>tk', ":Telescope keymaps <cr>")
+keymap('n', '<leader>th', "<cmd>Telescope help_tags <cr>", opts)
+keymap('n', '<leader>tk', "<cmd>Telescope keymaps <cr>", opts)
 
--- vim.keymap.set('n', '<C-j>', "<cmd>cprev<cr>zz")
--- vim.keymap.set('n', '<C-k>', "<cmd>cnext<cr>zz")
-vim.keymap.set('n', '<leader>j', "<cmd>lprev<cr>zz")
-vim.keymap.set('n', '<leader>k', "<cmd>lnext<cr>zz")
+-- keymap('n', '<C-j>', "<cmd>cprev<cr>zz")
+-- keymap('n', '<C-k>', "<cmd>cnext<cr>zz")
+keymap('n', '<leader>j', "<cmd>lprev<cr>zz", opts)
+keymap('n', '<leader>k', "<cmd>lnext<cr>zz", opts)
 
 vim.g.table_mode_corners = '|'
-vim.keymap.set('n', '<leader>mp', ":MarkdownPreview <cr>")
+keymap('n', '<leader>mp', "<cmd>MarkdownPreview <cr>", opts)
 
-local t_opts = { silent = true }
--- vim.keymap.set('n', '<leader>tn', ":FloatermToggle <cr>")
-vim.keymap.set('t', '<esc>', '<C-\\><C-N>', t_opts)
+-- keymap('n', '<leader>tn', ":FloatermToggle <cr>")
+keymap('t', '<esc>', '<C-\\><C-N>', opts)
 
 -- Python reorder imports command
 local fname = vim.api.nvim_buf_get_name(0)
-vim.keymap.set('n', '<leader>ri', ":!reorder-python-imports " .. fname .. "<cr><cr>")
+keymap('n', '<leader>ri', ":!reorder-python-imports " .. fname .. "<cr><cr>", opts)
 
 -- Tab keybinds
-vim.keymap.set('n', '<leader>te', ':tabnew<cr>:Explore<cr>')
-vim.keymap.set('n', '<leader>tn', ':tabnew<cr>')
+keymap('n', '<leader>te', '<cmd>tabnew<cr><cmd>Explore<cr>', opts)
+keymap('n', '<leader>tn', '<cmd>tabnew<cr>', opts)
 
 -- Easier window navigation
-vim.keymap.set('n', '<c-h>', '<c-w>h', opts)
-vim.keymap.set('n', '<c-j>', '<c-w>j', opts)
-vim.keymap.set('n', '<c-k>', '<c-w>k', opts)
-vim.keymap.set('n', '<c-l>', '<c-w>l', opts)
+keymap('n', '<c-h>', '<c-w>h', opts)
+keymap('n', '<c-j>', '<c-w>j', opts)
+keymap('n', '<c-k>', '<c-w>k', opts)
+keymap('n', '<c-l>', '<c-w>l', opts)
 
 -- Easier window resizing
-vim.keymap.set('n', '<leader>gh', '<cmd>vertical resize +4<cr>', opts)
-vim.keymap.set('n', '<leader>gj', '<cmd>resize +4<cr>', opts)
-vim.keymap.set('n', '<leader>gk', '<cmd>resize -4<cr>', opts)
-vim.keymap.set('n', '<leader>gl', '<cmd>vertical resize -4<cr>', opts)
+keymap('n', '<leader>gh', '<cmd>vertical resize +4<cr>', opts)
+keymap('n', '<leader>gj', '<cmd>resize +4<cr>', opts)
+keymap('n', '<leader>gk', '<cmd>resize -4<cr>', opts)
+keymap('n', '<leader>gl', '<cmd>vertical resize -4<cr>', opts)
 
 -- Naviagate buffers
-vim.keymap.set("n", "<S-l>", ":bnext<CR>", opts)
-vim.keymap.set("n", "<S-h>", ":bprevious<CR>", opts)
+keymap("n", "<s-l>", "<cmd>bnext<cr>", opts)
+keymap("n", "<s-h>", "<cmd>bprevious<cr>", opts)
 
--- Insert newline without moving cursor and is repeatable
-vim.keymap.set('n', '<leader>o', ':<c-u>call append(line("."),   repeat([""], v:count1))<CR>', opts)
-vim.keymap.set('n', '<leader>O', ':<c-u>call append(line(".")-1,   repeat([""], v:count1))<CR>', opts)
+-- insert newline without moving cursor and is repeatable
+keymap('n', '<leader>o', ':<c-u>call append(line("."),   repeat([""], v:count1))<cr>', opts)
+keymap('n', '<leader>o', ':<c-u>call append(line(".")-1,   repeat([""], v:count1))<cr>', opts)
+
+keymap('n', '<leader>fh', '[m', opts)
