@@ -1,5 +1,8 @@
 local opts = { silent = true }
 
+
+vim.o.scrolloff = 10
+vim.o.colorcolumn = "80"
 vim.opt.relativenumber = true
 
 vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = '[S]earch [R]esume' })
@@ -53,6 +56,12 @@ vim.keymap.set('n', '<c-h>', '<c-w>h', opts)
 vim.keymap.set('n', '<c-j>', '<c-w>j', opts)
 vim.keymap.set('n', '<c-k>', '<c-w>k', opts)
 vim.keymap.set('n', '<c-l>', '<c-w>l', opts)
+
+-- Easier window resizing
+vim.keymap.set('n', '<leader>gh', '<cmd>vertical resize +4<cr>', opts)
+vim.keymap.set('n', '<leader>gj', '<cmd>resize +4<cr>', opts)
+vim.keymap.set('n', '<leader>gk', '<cmd>resize -4<cr>', opts)
+vim.keymap.set('n', '<leader>gl', '<cmd>vertical resize -4<cr>', opts)
 
 -- Naviagate buffers
 vim.keymap.set("n", "<S-l>", ":bnext<CR>", opts)
