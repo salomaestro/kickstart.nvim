@@ -119,14 +119,6 @@ require('lazy').setup({
   --     vim.cmd.colorscheme 'onedark'
   --   end,
   -- },
-  {
-    'catppuccin/nvim',
-    name = "catppuccin",
-    priority = 1000,
-    config = function ()
-      vim.cmd.colorscheme 'catppuccin'
-    end,
-  },
 
   { -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
@@ -231,9 +223,6 @@ vim.wo.signcolumn = 'yes'
 vim.o.updatetime = 250
 vim.o.timeout = true
 vim.o.timeoutlen = 300
-
-vim.o.scrolloff = 10
-vim.o.colorcolumn = "80"
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
