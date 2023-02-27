@@ -2,4 +2,23 @@
 --  I promise not to create any merge conflicts in this directory :)
 --
 -- See the kickstart.nvim README for more information
-return {}
+return {
+  {
+    'catppuccin/nvim',
+    name = "catppuccin",
+    priority = 10000,
+    config = function ()
+      vim.cmd.colorscheme 'catppuccin'
+    end,
+  },
+
+  'tpope/vim-surround',
+  'kkoomen/vim-doge',
+  {
+    "danymat/neogen",
+    dependencies = "nvim-treesitter/nvim-treesitter",
+    config = true,
+    -- Uncomment next line if you want to follow only stable versions
+    -- version = "*" 
+  }
+}
