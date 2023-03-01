@@ -68,6 +68,6 @@ keymap("n", "<s-h>", "<cmd>bprevious<cr>", opts)
 
 -- insert newline without moving cursor and is repeatable
 keymap('n', '<leader>o', ':<c-u>call append(line("."),   repeat([""], v:count1))<cr>', opts)
-keymap('n', '<leader>o', ':<c-u>call append(line(".")-1,   repeat([""], v:count1))<cr>', opts)
+keymap('n', '<leader>O', ':<c-u>call append(line(".")-1,   repeat([""], v:count1))<cr>', opts)
 
 keymap('n', '<leader>fh', '[m', opts)
