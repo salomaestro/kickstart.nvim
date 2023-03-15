@@ -1,0 +1,16 @@
+local opts = { silent = true }
+local keymap = vim.keymap.set
+
+local dap_cmd = ':lua require("dap")'
+
+keymap('n', '<leader>dc', dap_cmd .. '.continue()<cr>', opts)
+keymap('n', '<leader>di', dap_cmd .. '.step_into()<cr>', opts)
+keymap('n', '<leader>do', dap_cmd .. '.step_over()<cr>', opts)
+keymap('n', '<leader>du', dap_cmd .. '.step_out()<cr>', opts)
+keymap('n', '<leader>dx', dap_cmd .. '.close()<cr>', opts)
+keymap('n', '<Leader>bb', dap_cmd .. '.toggle_breakpoint()<cr>', opts)
+keymap('n', '<Leader>BB', dap_cmd .. '.set_breakpoint(vim.fn.input("Breakpoint condition: "))<cr>', opts)
+keymap('n', '<Leader>lp', dap_cmd .. '.set_breakpoint(nil, nil, vim.fn.input("Log point message: "))<cr>', opts)
+
+-- dapui
+keymap('n', '<leader>dg', ':lua require("dapui").toggle()<cr>', opts)
