@@ -9,6 +9,7 @@ vim.o.autoindent = true
 vim.o.expandtab = true
 vim.o.tabstop = 4
 vim.o.shiftwidth = 4
+vim.o.linebreak = true
 
 keymap('n', '<leader>sr', require('telescope.builtin').resume, { desc = '[S]earch [R]esume' })
 keymap('n', '<leader>gs', vim.cmd.Git)
