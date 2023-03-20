@@ -30,11 +30,11 @@ return {
     },
   },
 
-  -- {
-  --   "ellisonleao/glow.nvim",
-  --   config = true,
-  --   cmd = "Glow",
-  -- },
+  {
+    "ellisonleao/glow.nvim",
+    config = true,
+    cmd = "Glow",
+  },
   -- {
   --   'ms-jpq/coq_nvim',
   --   branch = 'coq',
