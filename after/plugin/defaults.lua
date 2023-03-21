@@ -11,6 +11,7 @@ vim.o.tabstop = 4
 vim.o.shiftwidth = 4
 vim.o.linebreak = true
 
+keymap('n', '<leader>td', '<cmd>TodoTrouble <cr>', { desc = 'Toggle todo Trouble' })
 keymap('n', '<leader>sr', require('telescope.builtin').resume, { desc = '[S]earch [R]esume' })
 keymap('n', '<leader>gs', vim.cmd.Git)
 keymap('n', '<leader>pv', vim.cmd.Ex)
@@ -42,8 +43,8 @@ keymap('n', '<leader>tk', '<cmd>Telescope keymaps <cr>', opts)
 keymap('n', '<leader>j', '<cmd>lprev<cr>zz', opts)
 keymap('n', '<leader>k', '<cmd>lnext<cr>zz', opts)
 
-vim.g.table_mode_corners = '|'
-keymap('n', '<leader>mp', '<cmd>MarkdownPreview <cr>', opts)
+-- vim.g.table_mode_corners = '|'
+-- keymap('n', '<leader>mp', '<cmd>MarkdownPreview <cr>', opts)
 
 -- keymap('n', '<leader>tn', ":FloatermToggle <cr>")
 keymap('t', '<esc>', '<C-\\><C-N>', opts)
@@ -55,6 +56,7 @@ keymap('n', '<leader>ri', ':!reorder-python-imports ' .. fname .. '<cr><cr>', op
 -- Tab keybinds
 keymap('n', '<leader>te', '<cmd>tabnew<cr><cmd>Explore<cr>', opts)
 keymap('n', '<leader>tn', '<cmd>tabnew<cr>', opts)
+keymap('n', '<leader>tc', '<cmd>tabclose<cr>', opts)
 
 -- Easier window navigation
 keymap('n', '<c-h>', '<c-w>h', opts)
@@ -76,4 +78,5 @@ keymap('n', '<s-h>', '<cmd>bprevious<cr>', opts)
 keymap('n', '<leader>o', ':<c-u>call append(line("."),   repeat([""], v:count1))<cr>', opts)
 keymap('n', '<leader>O', ':<c-u>call append(line(".")-1,   repeat([""], v:count1))<cr>', opts)
 
--- keymap('n', '<leader>fh', '[m', opts)
+-- Glow markdown preview
+keymap('n', '<leader>mp', '<cmd>Glow<cr>', opts)
