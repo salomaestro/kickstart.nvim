@@ -11,10 +11,9 @@ vim.o.tabstop = 4
 vim.o.shiftwidth = 4
 vim.o.linebreak = true
 
-keymap('n', '<leader>td', '<cmd>TodoTrouble <cr>', { desc = 'Toggle todo Trouble' })
-keymap('n', '<leader>sr', require('telescope.builtin').resume, { desc = '[S]earch [R]esume' })
-keymap('n', '<leader>gs', vim.cmd.Git)
-keymap('n', '<leader>pv', vim.cmd.Ex)
+-- keymap('n', '<leader>sr', require('telescope.builtin').resume, { desc = '[S]earch [R]esume' })
+keymap('n', '<leader>gs', vim.cmd.Git, { desc = 'Git status' })
+keymap('n', '<leader>pv', vim.cmd.Ex, { desc = 'Open Explore' })
 
 -- Move visual selected lines with indentation (wow).
 keymap('v', 'J', ":m '>+1<cr>gv=gv", opts)
@@ -35,8 +34,9 @@ keymap('n', 'n', 'nzzzv')
 keymap('x', '<leader>p', '"_dP')
 
 -- Open useful telescope help windows.
-keymap('n', '<leader>th', '<cmd>Telescope help_tags <cr>', opts)
-keymap('n', '<leader>tk', '<cmd>Telescope keymaps <cr>', opts)
+-- keymap('n', '<leader>th', '<cmd>Telescope help_tags <cr>', opts) already in init.lua
+keymap('n', '<leader>sk', '<cmd>Telescope keymaps <cr>', opts, { desc = '[S]earch [K]eymaps' })
+keymap('n', '<leader>st', '<cmd>TodoTrouble <cr>', { desc = '[S]ee [T]odo trouble' })
 
 -- keymap('n', '<C-j>', "<cmd>cprev<cr>zz")
 -- keymap('n', '<C-k>', "<cmd>cnext<cr>zz")
@@ -50,8 +50,10 @@ keymap('n', '<leader>k', '<cmd>lnext<cr>zz', opts)
 keymap('t', '<esc>', '<C-\\><C-N>', opts)
 
 -- Python reorder imports command
-local fname = vim.api.nvim_buf_get_name(0)
-keymap('n', '<leader>ri', ':!reorder-python-imports ' .. fname .. '<cr><cr>', opts)
+local get_buf_fname = function()
+	return vim.api.nvim_buf_get_name(0)
+end
+keymap('n', '<leader>ri', ':!reorder-python-imports ' .. get_buf_fname() .. '<cr><cr>', opts)
 
 -- Tab keybinds
 keymap('n', '<leader>te', '<cmd>tabnew<cr><cmd>Explore<cr>', opts)
@@ -65,10 +67,10 @@ keymap('n', '<c-k>', '<c-w>k', opts)
 keymap('n', '<c-l>', '<c-w>l', opts)
 
 -- Easier window resizing
-keymap('n', '<leader>gh', '<cmd>vertical resize +4<cr>', opts)
-keymap('n', '<leader>gj', '<cmd>resize +4<cr>', opts)
-keymap('n', '<leader>gk', '<cmd>resize -4<cr>', opts)
-keymap('n', '<leader>gl', '<cmd>vertical resize -4<cr>', opts)
+keymap('n', '<leader>gh', '<cmd>vertical resize +8<cr>', opts)
+keymap('n', '<leader>gj', '<cmd>resize +8<cr>', opts)
+keymap('n', '<leader>gk', '<cmd>resize -8<cr>', opts)
+keymap('n', '<leader>gl', '<cmd>vertical resize -8<cr>', opts)
 
 -- Naviagate buffers
 keymap('n', '<s-l>', '<cmd>bnext<cr>', opts)
