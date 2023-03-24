@@ -1,7 +1,7 @@
 return {
   {
     'willothy/nvim-cokeline',
-    depends_on = 'kyazdani42/nvim-web-devicons',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function()
       require('cokeline').setup({})
     end,
