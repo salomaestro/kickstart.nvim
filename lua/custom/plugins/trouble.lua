@@ -14,7 +14,7 @@ return {
           information = "",
           other = "﫠",
         },
-        use_lsp_diagnostic_signs = true,
+        use_diagnostic_signs = true,
       }
     end,
   },
