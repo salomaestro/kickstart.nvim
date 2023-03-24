@@ -81,23 +81,49 @@ return {
     require('dap-go').setup()
 
     -- c configurations
-    dap.adapters.codelldb = {
-      type = 'server',
-      host = '127.0.0.1',
-      port = 13000
+    dap.adapters.cppdbg = {
+      id = 'cppdbg',
+      type = 'executable',
+      command = '/home/salo/.vscode/extension/debugAdapters/bin/OpenDebugAD7'
     }
+
+    -- dap.adapters.codelldb = {
+    --   type = 'server',
+    --   host = '127.0.0.1',
+    --   port = 13000
+    -- }
 
     dap.configurations.c = {
       {
-        type = 'codelldb',
+        name = 'Launch file',
+        type = 'cppdbg',
         request = 'launch',
         program = function()
           return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
         end,
-        --program = '${fileDirname}/${fileBasenameNoExtension}',
         cwd = '${workspaceFolder}',
-        terminal = 'integrated'
-      }
+        stopAtEntry = true,
+        terminal = 'integrated',
+        setupCommands = {
+          {
+            text = '-enable-pretty-printing',
+            description = 'enable pretty printing',
+            ignoreFailures = false
+          },
+        },
+      },
+      -- {
+      --   name = 'Attach to gdbserver :1234',
+      --   type = 'cppdbg',
+      --   request = 'launch',
+      --   MIMode = 'gdb',
+      --   miDebuggerServerAddress = 'localhost:1234',
+      --   miDebuggerPath = '/usr/bin/gdb',
+      --   cwd = '${workspaceFolder}',
+      --   program = function()
+      --     return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+      --   end,
+      -- }
     }
   end,
 }
