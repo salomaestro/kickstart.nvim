@@ -1,3 +1,4 @@
+local vim = vim
 local keymap = vim.keymap.set
 local opts = { silent = true }
 
@@ -12,6 +13,7 @@ vim.o.shiftwidth = 4
 vim.o.linebreak = true
 
 -- keymap('n', '<leader>sr', require('telescope.builtin').resume, { desc = '[S]earch [R]esume' })
+keymap('n', '<leader>ss', '<cmd>SymbolsOutline<cr>', { desc = '[S]earch [S]ymbols' })
 keymap('n', '<leader>gs', vim.cmd.Git, { desc = 'Git status' })
 keymap('n', '<leader>pv', vim.cmd.Ex, { desc = 'Open Explore' })
 
@@ -51,7 +53,7 @@ keymap('t', '<esc>', '<C-\\><C-N>', opts)
 
 -- Python reorder imports command
 local get_buf_fname = function()
-	return vim.api.nvim_buf_get_name(0)
+    return vim.api.nvim_buf_get_name(0)
 end
 keymap('n', '<leader>ri', ':!reorder-python-imports ' .. get_buf_fname() .. '<cr><cr>', opts)
 
