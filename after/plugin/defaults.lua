@@ -12,7 +12,12 @@ vim.o.tabstop = 4
 vim.o.shiftwidth = 4
 vim.o.linebreak = true
 
--- keymap('n', '<leader>sr', require('telescope.builtin').resume, { desc = '[S]earch [R]esume' })
+keymap('n', '<leader>f', function()
+    require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
+        winblend = 10,
+        previewer = false,
+    })
+end, { desc = '[F]uzzily search in current buffer' })
 keymap('n', '<leader>ss', '<cmd>SymbolsOutline<cr>', { desc = '[S]earch [S]ymbols' })
 keymap('n', '<leader>gs', vim.cmd.Git, { desc = 'Git status' })
 keymap('n', '<leader>pv', vim.cmd.Ex, { desc = 'Open Explore' })
@@ -42,8 +47,8 @@ keymap('n', '<leader>st', '<cmd>TodoTrouble <cr>', { desc = '[S]ee [T]odo troubl
 
 -- keymap('n', '<C-j>', "<cmd>cprev<cr>zz")
 -- keymap('n', '<C-k>', "<cmd>cnext<cr>zz")
-keymap('n', '<leader>j', '<cmd>lprev<cr>zz', opts)
-keymap('n', '<leader>k', '<cmd>lnext<cr>zz', opts)
+keymap('n', '<leader>j', '<cmd>lprev<cr>zz', opts, { desc = 'lprev' })
+keymap('n', '<leader>k', '<cmd>lnext<cr>zz', opts, { desc = 'lnext' })
 
 -- vim.g.table_mode_corners = '|'
 -- keymap('n', '<leader>mp', '<cmd>MarkdownPreview <cr>', opts)
