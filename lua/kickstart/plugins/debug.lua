@@ -22,6 +22,7 @@ return {
     'leoluz/nvim-dap-go',
   },
   config = function()
+    local vim = vim
     local dap = require 'dap'
     local dapui = require 'dapui'
 
@@ -43,14 +44,19 @@ return {
     require('mason-nvim-dap').setup_handlers()
 
     -- Basic debugging keymaps, feel free to change to your liking!
-    vim.keymap.set('n', '<F5>', dap.continue)
-    vim.keymap.set('n', '<F1>', dap.step_into)
-    vim.keymap.set('n', '<F2>', dap.step_over)
-    vim.keymap.set('n', '<F3>', dap.step_out)
-    vim.keymap.set('n', '<leader>b', dap.toggle_breakpoint)
+    -- vim.keymap.set('n', '<F5>', dap.continue)
+    -- vim.keymap.set('n', '<F1>', dap.step_into)
+    -- vim.keymap.set('n', '<F2>', dap.step_over)
+    -- vim.keymap.set('n', '<F3>', dap.step_out)
+    vim.keymap.set('n', '<leader>dc', dap.continue, { desc = '[D]ebug [C]ontinue' })
+    vim.keymap.set('n', '<leader>di', dap.step_into, { desc = '[D]ebug Step [I]nto' })
+    vim.keymap.set('n', '<leader>do', dap.step_over, { desc = '[D]ebug Step [O]ver' })
+    vim.keymap.set('n', '<leader>du', dap.step_out, { desc = '[D]ebug Step O[u]t' })
+    vim.keymap.set('n', '<leader>b', dap.toggle_breakpoint, { desc = '[D]ebug Toggle [B]reakpoint' })
     vim.keymap.set('n', '<leader>B', function()
       dap.set_breakpoint(vim.fn.input 'Breakpoint condition: ')
-    end)
+    end, { desc = '[D]ebug Set conditional [B]reakpoint' })
+    vim.keymap.set('n', '<leader>dg', dapui.toggle, { desc = '[D]ebug [G]UI' })
 
     -- Dap UI setup
     -- For more information, see |:help nvim-dap-ui|
