@@ -51,7 +51,7 @@ keymap('n', '<leader>j', '<cmd>lprev<cr>zz', opts, { desc = 'lprev' })
 keymap('n', '<leader>k', '<cmd>lnext<cr>zz', opts, { desc = 'lnext' })
 
 -- vim.g.table_mode_corners = '|'
--- keymap('n', '<leader>mp', '<cmd>MarkdownPreview <cr>', opts)
+keymap('n', '<leader>mp', '<cmd>MarkdownPreview <cr>', opts, { desc = 'Markdown Preview' })
 
 -- keymap('n', '<leader>tn', ":FloatermToggle <cr>")
 keymap('t', '<esc>', '<C-\\><C-N>', opts)
@@ -88,4 +88,4 @@ keymap('n', '<leader>o', ':<c-u>call append(line("."),   repeat([""], v:count1))
 keymap('n', '<leader>O', ':<c-u>call append(line(".")-1,   repeat([""], v:count1))<cr>', opts)
 
 -- Glow markdown preview
-keymap('n', '<leader>mp', '<cmd>Glow<cr>', opts)
+-- keymap('n', '<leader>mp', '<cmd>Glow<cr>', opts)
